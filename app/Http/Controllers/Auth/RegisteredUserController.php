@@ -47,6 +47,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('/#laporan');
+        return redirect()->intended('/#laporan')->with('success','Akunmu berhasil dibuat! Mari buat laporan');
     }
 }

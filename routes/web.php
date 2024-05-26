@@ -30,7 +30,7 @@ Route::get('/', function () {
         // "aktivitas" => Post::latest()->where('category_id',1)->get(),
         // "informasi" => Post::latest()->where('category_id',5)->get()
     ]);
-});
+})->name('home');
 
 // Route::get('/about', function () {
 //     return view('about', [
@@ -47,7 +47,7 @@ Route::get('/aktivitas', [PostController::class, 'aktivitas']);
 
 Route::get('/informasi', [PostController::class, 'informasi']);
 
-Route::get('/laporan', [PostController::class, 'laporan']);
+Route::get('/laporan', [PostController::class, 'laporan'])->name('laporan');
 
 // Register Mati
 // Route::get('/register',[RegisterController::class, 'index'])->middleware('guest');
@@ -73,7 +73,8 @@ Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, '
 route::get('posts/{post:slug}', [PostController::class,'show']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $posts = Post::where('user_id', auth()->user()->id)->get();
+    return view('dashboard', ['posts' => $posts]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -81,5 +82,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Untuk Close Notifikasi
+
 
 require __DIR__.'/auth.php';

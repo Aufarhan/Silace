@@ -1,6 +1,4 @@
-@extends('layouts.main')
-@section('container')
-
+<x-guest-layout>
 <section id="hero" class="background z-30 relative">
   <div class="flex flex-col justify-center items-center">
     <div class="bg-gradient-to-b from-primary to-violet-400 h-[36dvh] rounded-[20px] overflow-hidden flex items-center justify-center container pt-[8dvh] mt-[2dvh]">
@@ -16,12 +14,12 @@
           <p class="layer1 text-center -skew-y-6 py-1 px-3 rounded-full shadow-md origin-bottom-right rotate-12">Singkat</p>
           <p class="layer1 text-center skew-y-4 py-1 px-3 rounded-full shadow-md origin-bottom-left -rotate-6">Tepat</p>
         </div>
-        <img src="/images/HeroImage.png" alt="" class="w-[90dvw] object-fill drop-shadow-md">
+        <img src="{{ url('/images/HeroImage.png') }}" alt="" class="w-[90dvw] object-fill drop-shadow-md">
       </div>
     </div>
     <div class="layer1 rounded-[40px] h-auto flex flex-col items-center text-center justify-evenly container -mt-[42px] shadow-md gapy relative z-10">
       <div class="">
-        <h1 class="text-primary dark:text-primary">Silace :<h2>Si Lapor Cepat</h2></h1>
+        <h1 class="text-primary dark:text-primary logo">Silace :<h2>Si Lapor Cepat</h2></h1>
       </div>
       <div class="pt-[16px] py-[24px]">
         <p>Satu Platform untuk Ribuan Cerita, Masalah, Aduan dan Solusi.</p>
@@ -41,7 +39,7 @@
         @endguest 
         @auth
           <a href="/dashboard">
-          <x-secondary-button>
+          <x-secondary-button id="cek">
             {{ __('Cek Laporanmu') }}
           </x-secondary-button>
         </a>
@@ -51,8 +49,11 @@
         <x-stars>
         </x-stars>
       </div>
-      <div>
-        <h1 class="text-primary dark:text-primary">Bagaimana Cara Kerja Silace?</h1>
+      <div id="TutorialStart" class="pb-4">
+        <h1 class="text-primary dark:text-primary pb-4">Bagaimana Cara Kerja Silace?</h1>
+        <x-primary-button onclick="introJs().start();">
+          {{ __('Tutorial') }}
+        </x-primary-button>
       </div>
     </div>
   </div>
@@ -60,7 +61,7 @@
 
 <section id="caraKerja" class="background pt-[8dvh] pb-[2dvh] relative rounded-b-[40px] z-20">
   <div class="flex flex-col gap-y-[8dvh]">
-    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md">
+    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md" >
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
         <div class="w-full h-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -69,7 +70,7 @@
         </div>
       </div>
       <h1 class="text-primary dark:text-primary py-4">Isi Laporan</h1>
-      <p>Kamu akan mulai dengan mengisi laporan, mulai dari judul laporan, jenis laporan hingga lokasi kejadian. Kamu juga bisa memilih apakah laporan ini bersifat publik atau privat. Jika publik, laporanmu akan muncul di website dan bisa dilihat oleh semua orang. Jika privat, hanya kamu dan admin yang bisa melihatnya.</p>
+      <p>Kamu akan mulai dengan mengisi laporan, mulai dari judul laporan, jenis laporan hingga lokasi kejadian. <br><br> Kamu juga bisa memilih apakah laporan ini bersifat publik atau privat. Jika publik, laporanmu akan muncul di website dan bisa dilihat oleh semua orang. Jika privat, hanya kamu dan admin yang bisa melihatnya.</p>
     </div>
     <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md">
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
@@ -80,7 +81,7 @@
         </div>
       </div>
       <h1 class="text-primary dark:text-primary py-4">Verifikasi Laporan</h1>
-      <p>Setelah kamu mengirimkan laporan, admin kami akan memverifikasi untuk memastikan bahwa laporan tersebut valid dan bisa dipertanggungjawabkan. Jika sudah lolos verifikasi, laporanmu akan disalurkan ke pihak berwenang atau bisa juga kamu share ke media sosial.</p>
+      <p>Setelah kamu mengirimkan laporan, admin kami akan memverifikasi untuk memastikan bahwa laporan tersebut valid dan bisa dipertanggungjawabkan. <br><br> Jika sudah lolos verifikasi, laporanmu akan disalurkan ke pihak berwenang atau bisa juga kamu share ke media sosial.</p>
     </div>
     <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md">
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
@@ -92,7 +93,7 @@
         </div>
       </div>
       <h1 class="text-primary dark:text-primary py-4">Proses Laporan</h1>
-      <p>Laporan yang sudah diverifikasi akan diproses lebih lanjut. Setelah masalah selesai ditangani, laporan akan ditampilkan di website sebagai laporan yang telah selesai diproses. Kamu bisa memantau status laporanmu sepanjang proses ini.</p>
+      <p>Laporan yang sudah diverifikasi akan diproses lebih lanjut. Setelah masalah selesai ditangani, laporan akan ditampilkan di website sebagai laporan yang telah selesai diproses. <br><br> Kamu bisa memantau status laporanmu sepanjang proses ini.</p>
     </div>
   </div>
 </section>
@@ -103,7 +104,7 @@
     <x-stars-w></x-stars-w>
   </div>
   <div class="text-center  pb-[20px]">
-    <h1 class="text-white dark:text-white">Buat Laporan</h1>
+    <h1 class="text-white dark:text-white" data-title="Buat Laporan" data-intro="Mari buat laporanmu sekarang! Jangan lupa isi data sesuai dengan fakta ya." data-step="6">Buat Laporan</h1>
     <p class="text-white dark:text-white">Adukan keluhanmu disini!</p>
   </div>
   <section id="form" class="">
@@ -139,7 +140,7 @@
         <div id="postcat" class="absolute -top-2 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
           <h2 class="text-sm text-white">{{ $posts[0]->category->name }}</h2>
         </div>
-        <div id="imgpost" class="w-full rounded-[30px] overflow-hidden items-center justify-center shadow-md">
+        <div id="imgpost" class="w-full rounded-[30px] overflow-hidden items-center justify-center shadow-md" >
           @if($posts[0]->images)
           <img src="{{ asset('storage/' . $posts[0]->images[0]) }}" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
           @else
@@ -148,8 +149,8 @@
         </div>
         <div class="pt-[20px]">
           <div class="text-center">
-            <p class="text-black/60 pb-1 text-sm">{{ $posts[0]->region->kecamatan }}, {{ $posts[0]->region->wilayah }} | {{ $posts[0]->created_at->diffForHumans() }}</p>
-            <h2 class="text-primary dark:text-primary pb-1">{{ $posts[0]->title }}</h2>
+            <p class="text-black/60 dark:text-white/60 pb-1 text-sm">{{ $posts[0]->region->kecamatan }}, {{ $posts[0]->region->wilayah }} | {{ $posts[0]->created_at->diffForHumans() }} | Status: {{ $posts[0]->status->name }}</p>
+            <h2 class="text-primary dark:text-primary pb-1" data-title="4. Terverifikasi" data-intro="Jika laporanmu sudah diterima, diverifikasi dan juga memiliki sifat publik, maka laporanmu dapat dilihat oleh publik disini!." data-step="4">{{ $posts[0]->title }}</h2>
             <p>{!! Str::limit($posts[0]->excerpt, 40) !!}</p>
           </div>
         </div>
@@ -169,8 +170,8 @@
           </div>
           <div class="px-3 w-2/3">
             <div class="text-left">
-              <p class="text-black/60 pb-1 text-sm">{{ $post->region->kecamatan }}, {{ $post->region->wilayah }}</p>
-              <h2 class="text-primary dark:text-primary pb-1">{{ $post->title }}</h2>
+              <p class="text-black/60 dark:text-white/60 pb-1 text-sm">{{ $post->region->kecamatan }}, {{ $post->region->wilayah }} | Status: {{ $post->status->name }}</p>
+              <h2 class="text-primary dark:text-primary pb-1">{!! Str::limit($post->title, 40) !!}</h2>
               <p class="truncate">{!! Str::limit($post->excerpt, 55) !!}</p>
             </div>
           </div>
@@ -189,11 +190,10 @@
       <div class="text-center text-primary dark:text-primary gapy flex flex-col gap-[20px]">
         <a href="/laporan">
           <x-primary-button>{{ __('Lihat Aduan Lainnya') }}</x-primary-button></a>
-        <a href="/#laporan"><x-secondary-button>{{ __('Buat Laporan') }}</x-secondary-button></a>
+        <a href="/#laporan" ><x-secondary-button>{{ __('Buat Laporan') }}</x-secondary-button></a>
       </div>
     </div>
 
   </div>
 </section>
-
-@endsection
+</x-guest-layout>

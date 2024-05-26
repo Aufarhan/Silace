@@ -52,7 +52,7 @@ class DashboardPostController extends Controller
             'category_id' => 'required',
             'region_id' => 'required',
             'status_id' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk setiap gambar
+            'images.*' => 'image|mimes:jpeg,png,jpg', // Validasi untuk setiap gambar
             'body' => 'required',
             'lokasi' => 'required',
         ]);
@@ -76,7 +76,7 @@ class DashboardPostController extends Controller
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::create($validatedData);
-        return redirect('/dashboard')->with('success','New Post has been published');
+        return redirect('/dashboard')->with('success','Laporanmu sudah masuk, Tunggu kami verifikasi ya!');
 
     }
 
@@ -104,7 +104,8 @@ class DashboardPostController extends Controller
         return view('dashboard.posts.edit',[
             'post' => $post,
             'categories' => Category::all(),
-            'regions' => Region::all()
+            'regions' => Region::all(),
+            'statuses' => Status::all()
         ]);
     }
 
@@ -122,7 +123,7 @@ class DashboardPostController extends Controller
             'category_id' => 'required',
             'region_id' => 'required',
             'status_id' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk setiap gambar
+            'images.*' => 'image|mimes:jpeg,png,jpg', // Validasi untuk setiap gambar
             'body' => 'required',
             'lokasi' => 'required',
         ];
@@ -158,7 +159,7 @@ class DashboardPostController extends Controller
     
         $post->update($validatedData);
     
-        return redirect('/dashboard')->with('success','Post has been updated');
+        return redirect('/dashboard')->with('success','Laporanmu sudah diperbarui!');
     }
     
 
@@ -180,7 +181,7 @@ class DashboardPostController extends Controller
         // Menghapus postingan
         $post->delete();
 
-        return redirect('/dashboard')->with('success','Post has been deleted');
+        return redirect('/dashboard')->with('success','Laporanmu sudah dihapus!');
     }
 
     public function checkSlug(Request $request){

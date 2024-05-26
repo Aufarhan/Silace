@@ -90,7 +90,7 @@ class AdminCategoryController extends Controller
 
         Category::where('slug', $category_id)
             ->update($validatedData);
-        return redirect('/dashboard')->with('success','Post has been updated');
+        return redirect('/dashboard')->with('success','Laporan sudah diperbarui!');
     }
 
     /**

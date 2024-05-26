@@ -14,7 +14,7 @@
     <div class="step gapy">
       <div class="flex flex-col gap-y-[20px]">
         <div>
-            <label for="title" class="block mb-2"><h2 class="text-primary dark:text-primary">Judul Laporan</h2></label>
+            <label for="title" class="block mb-2"><h2 class="text-primary dark:text-primary" data-title="1. Mengisi Laporan" data-intro="Kamu akan mulai dengan mengisi laporan, mulai dari judul laporan, jenis laporan hingga lokasi kejadian." data-step="1">Judul Laporan</h2></label>
             <input type="text" onkeyup="showText()" placeholder="Judul Laporan Kamu" value="{{ old('title') }}" autofocus required name="title" id="title" class="form @error('title') peer-invalid:visible border-red-700 @enderror peer  w-full h-auto border-2 border-gray-300 hover:border-primary border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-primary dark:hover:bg-gray-600"/>
             @error('title')
             <p class="peer-invalid:visible text-red-700">
@@ -178,7 +178,7 @@
         </x-primary-button>
         @endguest
         @auth
-        <x-primary-button type="button" id="nextBtn" class="" onclick="nextPrev(1)">Selanjutnya</x-primary-button>
+        <x-primary-button type="button" id="nextBtn" class="" onclick="nextPrev(1) " data-title="2. Kirim Laporan" data-intro="Jika sudah mengisi laporan sesuai dengan data, anda bisa mengirim laporan tersebut melalui tombol disini. Jangan lupa cek kembali laporanmu ya!" data-step="2">Selanjutnya</x-primary-button>
         @endauth
     </div>
     <!-- end previous / next buttons -->

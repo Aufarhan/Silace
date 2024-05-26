@@ -14,8 +14,8 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         DB::table('statuses')->insert([
-            'name' => 'Publik',
-            'slug' => 'publik',
+            'name' => 'Laporan Diterima',
+            'slug' => 'laporan-diterima',
         ]);
         DB::table('statuses')->insert([
             'name' => 'Dalam Verifikasi',
@@ -38,7 +38,7 @@ class StatusSeeder extends Seeder
             'slug' => 'sedang-diproses-private',
         ]);
         DB::table('statuses')->insert([
-            'name' => 'Laporan Selesi (Private)',
+            'name' => 'Laporan Selesai (Private)',
             'slug' => 'laporan-selesai-private',
         ]);
     }

@@ -13,8 +13,8 @@ class PostController extends Controller
 {
 
     public function show(Post $post, Status $status){
-        if (!$status == 'Publik') {
-            abort(404); // Jika tidak public, tampilkan error 404
+        if (in_array($post->status_id, [5, 6, 7]) && $post->user_id !== auth()->id()) {
+            abort(404);
         }
     
         return view('post', [
@@ -42,8 +42,9 @@ class PostController extends Controller
 
         return view('laporan', [
             'title' => 'Laporan',
-            "posts" => Post::whereIn('status_id', [1, 3, 4])->latest()->filter(request(['search', 'category', 'author', 'region']))->paginate()->withQueryString(),
+            "posts" => Post::whereIn('status_id', [1, 3, 4])->latest()->filter(request(['search', 'category', 'author', 'region','status']))->paginate()->withQueryString(),
             'categories' => Category::all(),
+            'status' => Status::all(),
             'regions' => Region::all(),
             "search" => 'laporan',
         ]);
@@ -97,22 +98,4 @@ class PostController extends Controller
         ]);
     }
 
-    
-        // public function index(){
-    //     $title ='';
-    //     if(request('category')){
-    //         $category = Category::firstWhere('slug', request('category'));
-    //         $title = $category->name;
-    //     }
-
-    //     if(request('author')){
-    //         $author = User::firstWhere('username', request('author'));
-    //         $title = ' by ' . $author->name;
-    //     }
-
-    //     return view('posts', [
-    //         "title" => $title,
-    //         "posts" => Post::latest()->filter(request(['search', 'category','author']))->paginate(9)->withQueryString()
-    //     ]);
-    // }
 }

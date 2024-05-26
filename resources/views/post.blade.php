@@ -1,5 +1,4 @@
-@extends('layouts.main')
-@section('container')
+<x-guest-layout>
 
 <section id="post" class="background z-30 relative h-auto">
 
@@ -45,7 +44,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
 
-@endsection
+</x-guest-layout>

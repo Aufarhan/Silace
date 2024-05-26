@@ -2,6 +2,7 @@
 
 <nav class="">
   <div class="flex items-center justify-between px-[12px] layer2 border-b-2 border-gray-200 dark:border-layerDark fixed w-full top-0 z-[50] h-[60px] shadow-sm">
+    <x-notification></x-notification>
     <a href="/" class="flex items-center rtl:space-x-reverse">
         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Silace</span>
@@ -28,6 +29,8 @@
         <!-- Dropdown menu -->      
     </div>
   </div>
+
+  
   
   @auth
   <div class="z-[40] hidden text-base list-none layer1 divide-y divide-gray-500 rounded-lg shadow " id="user-dropdown">

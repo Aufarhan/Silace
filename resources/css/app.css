@@ -10,7 +10,7 @@
   }
 
   .layer1{
-    @apply backdrop-blur-sm bg-layerLight/85 dark:bg-layerDark/85;
+    @apply backdrop-blur-sm bg-layerLight/85 dark:bg-layerDark/85 ring ring-layerLight/90 dark:ring-layerDark/90;
   }
   .layer2{
     @apply bg-layerLight dark:bg-layerDark;
@@ -19,6 +19,7 @@
 
 html, body {
   overflow-x: hidden;
+  @apply text-secondary dark:text-backgroundLight
 }
 body {
   position: relative
@@ -30,10 +31,19 @@ body {
   text-wrap: balance;
   hyphens: auto;
   text-overflow: ellipsis;
-  @apply text-secondary dark:text-backgroundLight
 }
 
 /* Font Styles Start */
+.logo{
+    font-weight: 800;
+    line-height: 1.25;
+    font-size: 38px;
+    font-family: DM Serif Display, sans-serif;
+    @media (min-width: 768px) {
+        font-size: 42px;
+    }
+}
+
 h1 {
     font-weight: 800;
     line-height: 1.25;
@@ -175,6 +185,20 @@ li{
 .show {display:block;}
 .unshow {display:none;}
 /* Search Input End */
+
+/* Flickity */
+.flickity-button {
+    position: absolute;
+    border: none;
+    @apply backdrop-blur-sm bg-layerLight/85 dark:bg-layerDark/85 ring ring-layerLight/90 dark:ring-layerDark/90 text-primary;
+  }
+
+  .flickity-button-icon {
+    @apply fill-primary dark:fill-primary;
+  }
+
+
+/* Flickity Ends */
 
 /* Tailwind Override Trix */
 trix-editor {

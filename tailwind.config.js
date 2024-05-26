@@ -15,6 +15,7 @@ export default {
         extend: {
             fontFamily : {
                 'lexend' : ["Lexend", 'sans-serif'],
+                
             },
             colors: {
                 primary : "#698AFF",
@@ -22,7 +23,7 @@ export default {
                 backgroundLight : "#F0F0F0",
                 backgroundDark : "#0f172a",
                 layerLight : "#f1f5f9",
-                layerDark : "#1e293b",
+                layerDark : "#1B283B",
                 shade : "#F0F0F0",
             },
         },
