@@ -19,6 +19,7 @@
         "bs-stepper": "^1.7.0",
         "flickity": "^3.0.0",
         "flowbite": "^2.3.0",
-        "intro.js": "^7.2.0"
+        "intro.js": "^7.2.0",
+        "sweetalert2": "^11.6.13"
     }
 }

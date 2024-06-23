@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\Region;
+use App\Models\Status;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -9,81 +10,56 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardPostController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+// Main Routes (Publicly Accessible)
 Route::get('/', function () {
     return view('home', [
         "title" => "Silace",
         "posts" => Post::whereIn('status_id', [1, 3, 4])->latest()->filter(request(['search', 'category', 'author']))->paginate()->withQueryString(),
         'categories' => Category::all(),
         'regions' => Region::all(),
-        // "aktivitas" => Post::latest()->where('category_id',1)->get(),
-        // "informasi" => Post::latest()->where('category_id',5)->get()
     ]);
 })->name('home');
 
-// Route::get('/about', function () {
-//     return view('about', [
-//         "title" => "About",
-//         "name" => "Farhan Aufar",
-//         "email" => "farhanaufarr@gmail.com",
-//     ]);
-// });
-
-
-// Route::get('/posts', [PostController::class, 'index']);
-
-Route::get('/aktivitas', [PostController::class, 'aktivitas']);
-
-Route::get('/informasi', [PostController::class, 'informasi']);
-
+// Post Routes (Publicly Accessible)
 Route::get('/laporan', [PostController::class, 'laporan'])->name('laporan');
+Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('post');
+Route::get('posts/{post:slug}/show', function(Post $post){
+    return view('dashboard.posts.show', [
+        "title" => "Show Post",
+        'post' => $post,
+        'categories' => Category::all(),
+        'regions' => Region::all(),
+        'statuses' => Status::all(),
+    ]);
+});
 
-// Register Mati
-// Route::get('/register',[RegisterController::class, 'index'])->middleware('guest');
+// Dashboard Routes (Protected by Auth and Verified Middleware)
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardPostController::class, 'lobby'])->name('dashboard');
+    Route::resource('/dashboard/posts', DashboardPostController::class)->except(['create', 'store', 'destroy']);
+    Route::get('/dashboard/posts', [DashboardPostController::class, 'index'])->name('dashboard.posts.index');
+    Route::post('/dashboard/posts', [DashboardPostController::class, 'store'])->name('posts.store');
+    Route::delete('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+    // Admin-only routes
+    Route::middleware('isAdmin')->group(function () {
+        Route::get('/dashboard/verifikasi', [DashboardPostController::class, 'verifikasi'])->name('dashboard.verifikasi');
+        Route::put('/dashboard/verifikasi/{post}', [DashboardPostController::class, 'updateStatus'])->name('dashboard.verifikasi.updateStatus');
+        Route::get('/dashboard/proses', [DashboardPostController::class, 'proses'])->name('dashboard.proses');
+    Route::put('/dashboard/proses/{post:slug}', [DashboardPostController::class, 'updateProses'])->name('dashboard.proses.updateProses');
+    });
+});
 
-// Route::post('/register',[RegisterController::class, 'store']);
-// Register Mati Ends
-
-
-// Route::get('/dashboard',function(){
-//     return view('dashboard.index');
-// })->middleware('auth');
-
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
-
-
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
-
+// Admin Category Routes (Protected by isAdmin Middleware)
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware(['auth', 'isAdmin']);
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
 
-// Halaman Single Posts
-route::get('posts/{post:slug}', [PostController::class,'show']);
-
-Route::get('/dashboard', function () {
-    $posts = Post::where('user_id', auth()->user()->id)->get();
-    return view('dashboard', ['posts' => $posts]);
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// Profile Routes (Protected by Auth Middleware)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Untuk Close Notifikasi
-
-
+// Authentication Routes
 require __DIR__.'/auth.php';

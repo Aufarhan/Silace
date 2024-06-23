@@ -21,14 +21,15 @@ class CheckPendingPosts
             $pendingPostsCount = Post::where('user_id', auth()->user()->id)
                 ->where('status_id', 1)
                 ->count();
-
-            if ($pendingPostsCount > 0) {
+    
+            // Pastikan hanya mengatur pesan 'success' jika tidak ada pesan 'error' di sesi
+            if ($pendingPostsCount > 0 && !session()->has('error')) {
                 session()->flash('success', "Anda memiliki $pendingPostsCount laporan yang diterima, cek dashboard anda.");
             }
         }
-
+            
         return $next($request);
-    }
+    }    
 }
 
 

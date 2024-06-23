@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
     <form action="/{{$search}}">    
       @if (request('author'))
       <input type="hidden" name="author" value="{{ request('author') }}">

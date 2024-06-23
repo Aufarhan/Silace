@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-layerLight/90 dark:bg-layerDark/90 backdrop-blur-sm border-b border-gray-300 dark:border-gray-900 shadow-sm fixed w-full top-0 z-[99] h-auto">
     <!-- Primary Navigation Menu -->
     <div class="layer2 border-b border-gray-300 dark:border-gray-900 shadow-sm">
-        <div class="flex justify-between h-[60px] relative px-4">
+        <div class="flex justify-between h-[60px] relative px-4 container">
             <x-notification></x-notification>
             <div class="flex">
                 <!-- Logo -->
@@ -27,7 +27,7 @@
                 <div class="hidden sm:flex space-x-8">
                     @auth
                     <x-nav-link :href="('/dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Cek Laporanmu') }}
+                        {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="('/profile')" :active="request()->routeIs('profile.edit')">
                         {{ __('Edit Profile') }}
@@ -71,12 +71,12 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden h-auto flex flex-col w-full  justify-center text-center py-8">
         <div class="space-y-2 flex flex-col items-center w-full justify-center">                
-            <x-dropdown align="right" width="48">       
+            {{-- <x-dropdown align="right" width="48">       
                 <x-slot name="trigger">
                     @auth
                     <div class="flex flex-col pb-4 border-b border-gray-500 dark:border-gray-200 px-4 gap-y-2 items-center justify-center text-center">
                         <div class="w-20 h-20 rounded-full overflow-hidden flex justify-center items-center text-center shadow-md">
-                            <img src="https://source.unsplash.com/500x500?purple" alt="" class="w-full h-full object-fill flex items-center justify-center">
+                            <img src="https://source.unsplash.com/500x500?water" alt="" class="w-full h-full object-fill flex items-center justify-center">
                         </div>
                         <p class="text-center font-semibold pt-2">{{ Auth::user()->name }}</p>
                         <p class="text-center">{{ Auth::user()->email }}</p>
@@ -91,7 +91,7 @@
                         <p> {{ __('Edit Profil') }}</p>
                     </x-dropdown-link>
                     <x-dropdown-link :href="route('dashboard')">
-                        <p>{{ __('Cek Laporanmu') }}</p>
+                        <p>{{ __('Dashboard') }}</p>
                     </x-dropdown-link>
 
                     <!-- Authentication -->
@@ -104,7 +104,19 @@
                         </x-dropdown-link>
                     </form>
                 </x-slot>
-            </x-dropdown>
+            </x-dropdown> --}}
+            @auth
+            <a href="/dashboard">
+                    <div class="flex flex-col pb-4 border-b border-gray-500 dark:border-gray-200 px-4 gap-y-2 items-center justify-center text-center">
+                        <div class="w-20 h-20 rounded-full overflow-hidden flex justify-center items-center text-center shadow-md">
+                            <img src="https://source.unsplash.com/500x500?water" alt="" class="w-full h-full object-fill flex items-center justify-center">
+                        </div>
+                        <p class="text-center font-semibold pt-2">{{ Auth::user()->name }}</p>
+                        <p class="text-center">{{ Auth::user()->email }}</p>
+                        <p class="text-center font-semibold text-primary dark:text-primary">{{ __('Dashboard') }}</p>
+                    </div>
+                </a>
+            @endauth
             <x-responsive-nav-link :href="('/')" :active="request()->routeIs('home')">
                 {{ __('Beranda') }}
             </x-responsive-nav-link>

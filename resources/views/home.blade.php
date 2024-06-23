@@ -1,23 +1,59 @@
 <x-guest-layout>
 <section id="hero" class="background z-30 relative">
-  <div class="flex flex-col justify-center items-center">
-    <div class="bg-gradient-to-b from-primary to-violet-400 h-[36dvh] rounded-[20px] overflow-hidden flex items-center justify-center container pt-[8dvh] mt-[2dvh]">
-      <div class="max-h-[300x] max-w-[300x] relative z-10">
+  <div class="hidden md:block fixed bottom-4 right-4">
+    <x-primary-button onclick="introJs().start();" class="text-sm shadow-md">
+      {{ __('?') }}
+    </x-primary-button>
+  </div>
+  <div class="flex flex-col justify-center items-center container">
+    <div class="bg-gradient-to-b from-primary to-violet-400 md:h-[70dvh] h-[36dvh] rounded-[20px] md:rounded-t-[0px] overflow-hidden flex items-center justify-center pt-[8dvh] md:mt-[0dvh] mt-[2dvh] md:relative md:overflow-hidden w-full">
+      <div class="md:flex hidden absolute -translate-y-1/2 top-1/2 bg-backgroundLight/80 dark:bg-backgroundDark/80 h-full md:w-[40%] left-0 justiy-center container">
+        <div class="flex flex-col justify-center container">
+          <div class="">
+            <h1 class="logo text-3xl">Silace :<h2>Si Lapor Cepat</h2></h1>
+          </div>
+          <div class="pt-[16px] py-[24px]">
+            <p>Satu Platform untuk Ribuan Cerita, Masalah, Aduan dan Solusi.</p>
+          </div>
+          <div class="flex flex-row gap-4">
+            <a href="/#laporan">
+              <x-primary-button> 
+                {{ __('Lapor Sekarang') }}
+              </x-primary-button>
+            </a>
+            @guest
+              <a href="/register">
+                <x-secondary-button>
+                  {{ __('Daftar') }}
+                </x-secondary-button>
+              </a>
+            @endguest 
+            @auth
+              <a href="/dashboard">
+              <x-secondary-button id="cek">
+                {{ __('Cek Laporan') }}
+              </x-secondary-button>
+            </a>
+            @endauth
+          </div>
+        </div>
+      </div>
+      <div class="md:max-h-[600px] md:max-w-[600px] max-h-[300px] max-w-[300px] relative z-10 md:absolute md:right-6 md:-bottom-20">
         <div class="absolute -translate-y-1/2 -translate-x-1/2 top-3/4 left-1/2 flex flex-col gap-6">
-          <div class="w-[220px] h-[220px] bg-backgroundLight/15 dark:bg-backgroundDark/15 flex rounded-full"></div>
+          <div class="w-[220px] h-[220px] md:w-[320px] md:h-[320px] bg-backgroundLight/15 dark:bg-backgroundDark/15 flex rounded-full"></div>
         </div>
         <div class="absolute -translate-y-1/2 -translate-x-1/2 top-3/4 left-1/2 flex flex-col gap-6">
-          <div class="w-[300px] h-[300px] bg-backgroundLight/15 dark:bg-backgroundDark/15 flex rounded-full"></div>
+          <div class="w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-backgroundLight/15 dark:bg-backgroundDark/15 flex rounded-full"></div>
         </div>
-        <div class="absolute top-2 left-2 flex flex-col gap-6">
-          <p class="layer1 text-center skew-y-6 py-1 px-3 rounded-full shadow-md origin-bottom-left -rotate-12">Cepat</p>
-          <p class="layer1 text-center -skew-y-6 py-1 px-3 rounded-full shadow-md origin-bottom-right rotate-12">Singkat</p>
-          <p class="layer1 text-center skew-y-4 py-1 px-3 rounded-full shadow-md origin-bottom-left -rotate-6">Tepat</p>
+        <div class="absolute md:top-0 md:left-0 top-2 left-2 flex flex-col gap-6">
+          <p class="layer1 text-center skew-y-6 py-1 px-3 rounded-full shadow-md origin-bottom-left -rotate-12 md:text-xl">Cepat</p>
+          <p class="layer1 text-center -skew-y-6 py-1 px-3 rounded-full shadow-md origin-bottom-right rotate-12 md:text-xl">Singkat</p>
+          <p class="layer1 text-center skew-y-4 py-1 px-3 rounded-full shadow-md origin-bottom-left -rotate-6 md:text-xl">Tepat</p>
         </div>
-        <img src="{{ url('/images/HeroImage.png') }}" alt="" class="w-[90dvw] object-fill drop-shadow-md">
+        <img src="{{ url('/images/HeroImage.png') }}" alt="" class="w-[90dvw] md:w-[140dvw] object-fill drop-shadow-md">
       </div>
     </div>
-    <div class="layer1 rounded-[40px] h-auto flex flex-col items-center text-center justify-evenly container -mt-[42px] shadow-md gapy relative z-10">
+    <div class="md:hidden layer1 rounded-[40px] h-auto flex flex-col items-center text-center justify-evenly -mt-[42px] shadow-md gapy relative z-10">
       <div class="">
         <h1 class="text-primary dark:text-primary logo">Silace :<h2>Si Lapor Cepat</h2></h1>
       </div>
@@ -40,7 +76,7 @@
         @auth
           <a href="/dashboard">
           <x-secondary-button id="cek">
-            {{ __('Cek Laporanmu') }}
+            {{ __('Cek Laporan') }}
           </x-secondary-button>
         </a>
         @endauth
@@ -50,7 +86,7 @@
         </x-stars>
       </div>
       <div id="TutorialStart" class="pb-4">
-        <h1 class="text-primary dark:text-primary pb-4">Bagaimana Cara Kerja Silace?</h1>
+        <h1 class="text-primary dark:text-primary pb-6">Bagaimana Cara Kerja Silace?</h1>
         <x-primary-button onclick="introJs().start();">
           {{ __('Tutorial') }}
         </x-primary-button>
@@ -59,9 +95,9 @@
   </div>
 </section>
 
-<section id="caraKerja" class="background pt-[8dvh] pb-[2dvh] relative rounded-b-[40px] z-20">
-  <div class="flex flex-col gap-y-[8dvh]">
-    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md" >
+<section id="caraKerja" class="background pt-[8dvh] pb-[2dvh] md:pb-[4dvh] relative rounded-b-[40px] z-20">
+  <div class="flex flex-col md:grid md:grid-cols-3 md:gap-x-6 gap-y-[8dvh] container">
+    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container  shadow-md" >
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
         <div class="w-full h-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -72,7 +108,7 @@
       <h1 class="text-primary dark:text-primary py-4">Isi Laporan</h1>
       <p>Kamu akan mulai dengan mengisi laporan, mulai dari judul laporan, jenis laporan hingga lokasi kejadian. <br><br> Kamu juga bisa memilih apakah laporan ini bersifat publik atau privat. Jika publik, laporanmu akan muncul di website dan bisa dilihat oleh semua orang. Jika privat, hanya kamu dan admin yang bisa melihatnya.</p>
     </div>
-    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md">
+    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly  container shadow-md">
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
         <div class="w-full h-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
@@ -83,7 +119,7 @@
       <h1 class="text-primary dark:text-primary py-4">Verifikasi Laporan</h1>
       <p>Setelah kamu mengirimkan laporan, admin kami akan memverifikasi untuk memastikan bahwa laporan tersebut valid dan bisa dipertanggungjawabkan. <br><br> Jika sudah lolos verifikasi, laporanmu akan disalurkan ke pihak berwenang atau bisa juga kamu share ke media sosial.</p>
     </div>
-    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container shadow-md">
+    <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container  shadow-md">
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
         <div class="w-full h-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-send-check-fill " viewBox="0 0 16 16">
@@ -100,30 +136,32 @@
 
 
 <section id="laporan" class="bg-primary h-auto pt-[20px] relative z-10 -mt-[40px] rounded-b-[40px] ">
-  <div class="pt-[40px] flex justify-center items-center">
-    <x-stars-w></x-stars-w>
-  </div>
-  <div class="text-center  pb-[20px]">
-    <h1 class="text-white dark:text-white" data-title="Buat Laporan" data-intro="Mari buat laporanmu sekarang! Jangan lupa isi data sesuai dengan fakta ya." data-step="6">Buat Laporan</h1>
-    <p class="text-white dark:text-white">Adukan keluhanmu disini!</p>
-  </div>
-  <section id="form" class="">
-    <div class="layer2 rounded-t-[40px] h-auto flex flex-col items-center text-center justify-evenly container shadow-m gapy">
-    @guest
-      {{-- kalo disini, pas baru klik form langsung ke login/register --}}
-        <a href="/login">
-          @include('partials.postcreate')</a>
-    @endguest
-    @auth
-      @include('partials.postcreate')    
-    @endauth
+  <div class="container">
+    <div class="pt-[40px] flex justify-center items-center">
+      <x-stars-w></x-stars-w>
     </div>
-  </section>
+    <div class="text-center  pb-[20px]">
+      <h1 class="text-white dark:text-white" data-title="Buat Laporan" data-intro="Mari buat laporanmu sekarang! Jangan lupa isi data sesuai dengan fakta ya." data-step="6">Buat Laporan</h1>
+      <p class="text-white dark:text-white">Adukan keluhanmu disini!</p>
+    </div>
+    <section id="form" class="">
+      <div class="layer2 rounded-t-[40px] h-auto flex flex-col items-center text-center justify-evenly  gapy">
+      @guest
+        {{-- kalo disini, pas baru klik form langsung ke login/register --}}
+          <a href="/login">
+            @include('partials.postcreate')</a>
+      @endguest
+      @auth
+        @include('partials.postcreate')    
+      @endauth
+      </div>
+    </section>
+  </div>
 </section>
 
 <section id="aduan" class="background h-auto relative -mt-[40px] z-0">
-  <div class="w-full">
-    <div class="layer2 rounded-b-[40px] h-auto  container shadow-md">
+  <div class="w-full container">
+    <div class="layer2 rounded-b-[40px] h-auto  shadow-md">
       <div class="pt-[20px] flex justify-center items-center">
         <x-stars></x-stars>
       </div>
@@ -136,15 +174,15 @@
     
     @if($posts->count())
     <div class="flex flex-wrap justify-center justify-items-center gapy gap-[20px] w-full">
-      <a href="/posts/{{ $posts[0]->slug }}" class="w-full flex flex-col justify-between layer2 rounded-[40px] h-auto shadow-md  group  container py-[20px] relative">
+      <a href="/posts/{{ $posts[0]->slug }}" class="w-full flex flex-col justify-between layer2 rounded-[40px] h-auto shadow-md  group  py-[20px] relative">
         <div id="postcat" class="absolute -top-2 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
           <h2 class="text-sm text-white">{{ $posts[0]->category->name }}</h2>
         </div>
-        <div id="imgpost" class="w-full rounded-[30px] overflow-hidden items-center justify-center shadow-md" >
+        <div id="imgpost" class="w-full rounded-[30px] h-[40dvh] overflow-hidden items-center justify-center shadow-md" >
           @if($posts[0]->images)
           <img src="{{ asset('storage/' . $posts[0]->images[0]) }}" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
           @else
-          <img src="https://source.unsplash.com/500x500/?purple" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
+          <img src="https://source.unsplash.com/featured/?nature,water" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
           @endif
         </div>
         <div class="pt-[20px]">
@@ -155,9 +193,9 @@
           </div>
         </div>
       </a>
-      <div class="flex flex-col gap-4 mx-[12.5px]">
+      <div class="flex flex-col md:grid grid-cols-3 gap-4 mx-[12.5px] w-full">
         @foreach ($posts->skip(1)->slice(0,3) as $post)
-        <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  container gapy relative ">
+        <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  gapy relative md:p-3">
           <div id="postcat" class="absolute -top-3 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
             <h2 class="text-sm text-white">{{ $post->category->name }}</h2>
           </div>
@@ -165,7 +203,7 @@
             @if($post->images)
             <img src="{{ asset('storage/' . $post->images[0]) }}" alt="{{ $post->title }}" class="h-full w-full object-cover flex">
             @else
-            <img src="https://source.unsplash.com/500x500/?purple" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
+            <img src="https://source.unsplash.com/featured/?nature,water" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
             @endif
           </div>
           <div class="px-3 w-2/3">
@@ -186,7 +224,7 @@
     </div>
     @endif
 
-    <div class="layer2 rounded-t-[40px] h-auto pb-[8dvh]  container shadow-md">
+    <div class="layer2 rounded-t-[40px] h-auto pb-[8dvh] container  shadow-md">
       <div class="text-center text-primary dark:text-primary gapy flex flex-col gap-[20px]">
         <a href="/laporan">
           <x-primary-button>{{ __('Lihat Aduan Lainnya') }}</x-primary-button></a>

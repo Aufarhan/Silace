@@ -37,6 +37,7 @@ class PostFactory extends Factory
             'category_id' => mt_rand(1,4),
             'region_id' => mt_rand(1,39),
             'status_id' => mt_rand(1,4),
+            'komentar' => $this->faker->sentence(mt_rand(2,7)),
 
         ];
     }

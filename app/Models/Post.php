@@ -25,21 +25,21 @@ class Post extends Model
             ->orWhere('body','like','%'.$search.'%');
         });
 
-        $query->when($filters['region']??false, function($query, $region) {
-            return $query->whereHas('region', function($query) use($region){
-                $query->where('slug',$region);
+        $query->when($filters['region'] ?? false, function($query, $region) {
+            return $query->whereHas('region', function($query) use($region) {
+                $query->where('name', 'like', '%' . $region . '%');
             });
         });
-
-        $query->when($filters['category']??false, function($query, $category) {
-            return $query->whereHas('category', function($query) use($category){
-                $query->where('slug',$category);
+        
+        $query->when($filters['category'] ?? false, function($query, $category) {
+            return $query->whereHas('category', function($query) use($category) {
+                $query->where('name', 'like', '%' . $category . '%');
             });
         });
-
-        $query->when($filters['status']??false, function($query, $status) {
-            return $query->whereHas('status', function($query) use($status){
-                $query->where('slug',$status);
+        
+        $query->when($filters['status'] ?? false, function($query, $status) {
+            return $query->whereHas('status', function($query) use($status) {
+                $query->where('name', 'like', '%' . $status . '%');
             });
         });
 

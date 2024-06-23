@@ -1,6 +1,6 @@
 <x-guest-layout>
 <section class="w-full bg-primary pt-[1dvh] pb-[6dvh]">
-    <div class="background md:container  md:py-4 py-2 rounded-[1rem] shadow-lg shadow-hitam/10 md:mx-auto mx-2">
+    <div class="background container rounded-[1rem] shadow-lg shadow-hitam/10 md:mx-auto mx-2">
         <div class="flex flex-col justify-center items-center gapy" id="title">
           <h1 class="text-primary dark:text-primary text-center">Laporan-laporan</h1>
           <h2>Yang telah masuk ke Silace</h2>
@@ -9,23 +9,23 @@
           @include('partials.searchbar')
         </div>
 
-        <div class="grid justify-center md:justify-start pt-2 px-2">
-          <div>
-            <h1 class="font-black uppercase text-xl md:text-2xl text-primary dark:text-primary md:text-left text-center">Jenis Laporan</h1>
-          </div>
-        </div>
-
         <form action="/laporan">
+          <div class="grid justify-center md:justify-start pt-2 px-2">
+            <div>
+              <h1 class="font-black uppercase text-xl md:text-2xl text-primary dark:text-primary md:text-left text-center">Jenis Laporan</h1>
+            </div>
+          </div>
           <div class="carousel px-4 py-2" data-flickity='{ "freeScroll": true, "contain": true, "pageDots": false }'>
-              <button class="py-2 px-0.5" value="">
-                  <div class="carousel-cell rounded-lg ring-2 ring-primary px-10 py-2">Semua</div>
+              <button class="py-2 px-0.5 mr-2" value="">
+                  <div class="carousel-cell rounded-lg ring-2 ring-primary px-2 py-2">Semua</div>
               </button>
               @foreach ($categories as $category)
-              <button class="py-2 px-0.5 mx-2"  name="category" value="{{ $category->slug }}">
-                  <div class="carousel-cell rounded-lg ring-2 ring-primary px-10 py-2">{{ $category->name }}</div>
+              <button class="py-2 px-0.5 mr-2"  name="category" value="{{ $category->slug }}">
+                  <div class="carousel-cell rounded-lg ring-2 ring-primary px-2 py-2">{{ $category->name }}</div>
               </button>
               @endforeach
           </div>
+          
         </form>
         <div>
           @if($posts->count())
@@ -34,11 +34,11 @@
               <div id="postcat" class="absolute -top-2 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
                 <h2 class="text-sm text-white">{{ $posts[0]->category->name }}</h2>
               </div>
-              <div id="imgpost" class="w-full rounded-[30px] overflow-hidden items-center justify-center shadow-md" >
+              <div id="imgpost" class="w-full rounded-[30px] h-[40dvh] overflow-hidden items-center justify-center shadow-md" >
                 @if($posts[0]->images)
                 <img src="{{ asset('storage/' . $posts[0]->images[0]) }}" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
                 @else
-                <img src="https://source.unsplash.com/500x500/?purple" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
+                <img src="https://source.unsplash.com/featured/?nature,water" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
                 @endif
               </div>
               <div class="pt-[20px]">
@@ -49,8 +49,8 @@
                 </div>
               </div>
             </a>
-            <div class="flex flex-col gap-4 mx-[12.5px]">
-              @foreach ($posts->skip(1)->slice(0,3) as $post)
+            <div class="flex flex-col gap-4 w-full">
+              @foreach ($posts->skip(1)->slice(0,6) as $post)
               <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  container gapy relative ">
                 <div id="postcat" class="absolute -top-3 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
                   <h2 class="text-sm text-white">{{ $post->category->name }}</h2>
@@ -59,7 +59,7 @@
                   @if($post->images)
                   <img src="{{ asset('storage/' . $post->images[0]) }}" alt="{{ $post->title }}" class="h-full w-full object-cover flex">
                   @else
-                  <img src="https://source.unsplash.com/500x500/?purple" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
+                  <img src="https://source.unsplash.com/featured/?nature,water" alt="{{ $posts[0]->title }}" class="h-full w-full object-cover flex">
                   @endif
                 </div>
                 <div class="px-3 w-2/3">

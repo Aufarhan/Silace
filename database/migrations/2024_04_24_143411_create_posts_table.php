@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('body');
             $table->text('lokasi');
+            $table->text('komentar');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

@@ -16,7 +16,9 @@ class PostController extends Controller
         if (in_array($post->status_id, [5, 6, 7]) && $post->user_id !== auth()->id()) {
             abort(404);
         }
-    
+
+        $post = Post::where('slug', $post->slug)->firstOrFail();
+            
         return view('post', [
             "title" => $post->title,
             "post" => $post

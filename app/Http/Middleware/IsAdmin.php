@@ -1,27 +1,28 @@
 <?php
 
+// app/Http/Middleware/IsAdmin.php
+
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\Post;
 
 class IsAdmin
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        // $post = $request->route()->parameter('post');
-        
-        // if(!$post->is_public && (!auth()->check() || !auth()->user()->is_admin)){
-        //     abort(403);
-        // }
-        
+        if (Auth::user()->is_admin != 1) {
+            abort(403, 'Anda tidak memiliki izin untuk mengakses halaman ini.');
+        }
         return $next($request);
     }
 }

@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-<div class="flex flex-row gap-x-3 justify-items-center p-2 w-full justify-between rounded-[15px] bg-primary dark:bg-primary shadow-md">
+<div class="flex flex-row gap-x-3 justify-items-center p-2 w-full justify-between rounded-[20px] bg-primary dark:bg-primary shadow-md">
     <div class="flex items-center mx-[2dvh]">
         @if ($paginator->onFirstPage())
             <div class=""><h2 class="dark:text-white text-white"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="#ffffff70" class="bi bi-caret-left-fill" viewBox="0 0 16 16">

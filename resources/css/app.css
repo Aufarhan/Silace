@@ -681,24 +681,21 @@ trix-editor .attachment__metadata .attachment__size {
 }
 @media (min-width: 370px) {
   .container {
-      max-width: 340px;
+      max-width: 400px;
       padding-right: 12px;
       padding-left: 12px;
   }
 }
-@media (min-width: 380px) {
+@media (min-width: 765px) {
   .container {
-      max-width: 375px;
-      padding-right: 12px;
-      padding-left: 12px;
+      max-width: 1240px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-right: auto;
+      margin-left: auto;
   }
 }
-@media (min-width: 1024px) {
-  .container {
-      max-width: 1024px;
-  }
-}
-@media (min-width: 1280px) {
+/* @media (min-width: 1280px) {
   .container {
       max-width: 1280px;
   }
@@ -707,5 +704,5 @@ trix-editor .attachment__metadata .attachment__size {
   .container {
       max-width: 1320px;
   }
-}
+} */
 /* Container ends */
