@@ -189,13 +189,13 @@
           <div class="text-center">
             <p class="text-black/60 dark:text-white/60 pb-1 text-sm">{{ $posts[0]->region->kecamatan }}, {{ $posts[0]->region->wilayah }} | {{ $posts[0]->created_at->diffForHumans() }} | Status: {{ $posts[0]->status->name }}</p>
             <h2 class="text-primary dark:text-primary pb-1" data-title="4. Terverifikasi" data-intro="Jika laporanmu sudah diterima, diverifikasi dan juga memiliki sifat publik, maka laporanmu dapat dilihat oleh publik disini!." data-step="4">{{ $posts[0]->title }}</h2>
-            <p>{!! Str::limit($posts[0]->excerpt, 40) !!}</p>
+            <p class="text-xs">{!! Str::limit($posts[0]->excerpt, 60) !!}</p>
           </div>
         </div>
       </a>
       <div class="flex flex-col md:grid grid-cols-3 gap-4 mx-[12.5px] w-full">
         @foreach ($posts->skip(1)->slice(0,3) as $post)
-        <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  gapy relative md:p-3">
+        <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  gapy relative md:p-3 ">
           <div id="postcat" class="absolute -top-3 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
             <h2 class="text-sm text-white">{{ $post->category->name }}</h2>
           </div>
@@ -210,7 +210,7 @@
             <div class="text-left">
               <p class="text-black/60 dark:text-white/60 pb-1 text-sm">{{ $post->region->kecamatan }}, {{ $post->region->wilayah }} | Status: {{ $post->status->name }}</p>
               <h2 class="text-primary dark:text-primary pb-1">{!! Str::limit($post->title, 40) !!}</h2>
-              <p class="truncate">{!! Str::limit($post->excerpt, 55) !!}</p>
+              <p class="text-xs">{!! Str::limit($post->excerpt, 55) !!}</p>
             </div>
           </div>
         </a>

@@ -1,4 +1,4 @@
-@if ($posts->count() != 1 )
+@if ($posts->count() > 0 )
 <div class="flex flex-col justify-center h-auto items-center w-full">
   <div class="flex gapy ">
   {{ $posts->links('pagination.custom') }}  

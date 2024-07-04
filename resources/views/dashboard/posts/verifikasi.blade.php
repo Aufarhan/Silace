@@ -36,6 +36,8 @@
                             @else
                             anonymous@gmail.com
                         @endif</h3>
+                        <p class="text-sm pt-2">Lokasi Laporan</p>
+                        <h3>{{ $post->lokasi }}</h3>
                         <p class="text-sm pt-2">Unggahan</p>
                         <h3>@if($post->images) {{ count($post->images) }} unggahan @else Tidak ada unggahan @endif</h3>
                     </div>
