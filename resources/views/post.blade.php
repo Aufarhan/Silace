@@ -3,7 +3,7 @@
 <section id="post" class="background z-30 relative h-auto">
 
     <div class="h-auto">
-      <div class="carousel rounded-b-[40px] overflow-hidden h-[40dvh] shadow-md" data-flickity='{ "autoPlay": true, "adaptiveHeight": true, "selectedAttraction": 0.01, "friction": 0.15, "pageDots" : false, "pauseAutoPlayOnHover" : false, "imagesLoaded" : true, "initialIndex" : 1 }'>
+      <div class="carousel rounded-b-[40px] overflow-hidden h-[40dvh] shadow-md" data-flickity='{ "autoPlay": 4000, "adaptiveHeight": true, "pageDots" : false, "pauseAutoPlayOnHover" : false, "imagesLoaded" : true, "initialIndex" : 1 }'>
         @if($post->images)
         @foreach($post->images as $image)
         <div class="h-[40dvh] w-full">

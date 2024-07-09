@@ -108,9 +108,9 @@
             @auth
             <a href="/dashboard">
                     <div class="flex flex-col pb-4 border-b border-gray-500 dark:border-gray-200 px-4 gap-y-2 items-center justify-center text-center">
-                        <div class="w-20 h-20 rounded-full overflow-hidden flex justify-center items-center text-center shadow-md">
+                        {{-- <div class="w-20 h-20 rounded-full overflow-hidden flex justify-center items-center text-center shadow-md">
                             <img src="https://source.unsplash.com/500x500?water" alt="" class="w-full h-full object-fill flex items-center justify-center">
-                        </div>
+                        </div> --}}
                         <p class="text-center font-semibold pt-2">{{ Auth::user()->name }}</p>
                         <p class="text-center">{{ Auth::user()->email }}</p>
                         <p class="text-center font-semibold text-primary dark:text-primary">{{ __('Dashboard') }}</p>

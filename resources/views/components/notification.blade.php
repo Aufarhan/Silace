@@ -1,10 +1,10 @@
-@if (request()->is('dashboard/*') || request()->is('*/show'))
-<a href="/dashboard" id="infoDiv" class="flex w-full absolute items-center left-0 h-[40px] top-[60px] z-[99] bg-primary dar:bg-primary  px-2 shadow-md text-sm rounded-b-[20px]">
+@if (request()->is('dashboard/*') || request()->is('*/show') || request()->is('profile'))
+<a href="/dashboard" id="infoDiv" class="flex w-full absolute items-center left-0 h-[40px] top-[60px] z-[99] bg-primary dark:bg-primary  px-2 shadow-md text-sm rounded-b-[10px]">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
     </svg>
     <span class="text-sm px-2">
-      <p>Kembali ke Dashboard</p></span>
+      <p class="text-white">Kembali ke Dashboard</p></span>
 </a>
 @endif
 @if(session()->has('success'))

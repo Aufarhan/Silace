@@ -19,13 +19,13 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('region_id');
             $table->foreignId('status_id')->default((2));
-            $table->string('title');
+            $table->string('title', 200);
             $table->string('slug')->unique();
             $table->string('images')->nullable();
-            $table->text('excerpt');
-            $table->text('body');
-            $table->text('lokasi');
-            $table->text('komentar');
+            $table->text('excerpt', 400);
+            $table->text('body', 5000);
+            $table->text('lokasi', 200);
+            $table->text('komentar', 2000);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

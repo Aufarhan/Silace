@@ -16,8 +16,8 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
         $table->id();
-        $table->string('wilayah');
-        $table->string('kecamatan')->unique();
+        $table->string('wilayah', 200);
+        $table->string('kecamatan', 200)->unique();
         $table->string('slug');
         $table->timestamps();
         });
