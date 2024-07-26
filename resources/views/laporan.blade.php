@@ -1,6 +1,6 @@
 <x-guest-layout>
 <section class="w-full bg-primary pt-[1dvh] pb-[6dvh]">
-    <div class="background container rounded-[1rem] shadow-lg shadow-hitam/10 md:mx-auto mx-2">
+    <div data-aos="fade-up" class="background container rounded-[1rem] shadow-lg shadow-hitam/10 md:mx-auto mx-2">
         <div class="flex flex-col justify-center items-center gapy" id="title">
           <h1 class="text-primary dark:text-primary text-center">Laporan-laporan</h1>
           <h2>Yang telah masuk ke Silace</h2>
@@ -29,7 +29,7 @@
         </form>
         <div>
           @if($posts->count())
-          <div class="flex flex-wrap justify-center justify-items-center gapy gap-[20px] w-full">
+          <div data-aos="fade-up" class="flex flex-wrap justify-center justify-items-center gapy gap-[20px] w-full">
             <a href="/posts/{{ $posts[0]->slug }}" class="w-full flex flex-col justify-between layer2 rounded-[40px] h-auto shadow-md  group  container py-[20px] relative">
               <div id="postcat" class="absolute -top-2 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
                 <h2 class="text-sm text-white">{{ $posts[0]->category->name }}</h2>
@@ -51,7 +51,7 @@
             </a>
             <div class="flex flex-col gap-4 w-full">
               @foreach ($posts->skip(1)->slice(0,6) as $post)
-              <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  container gapy relative ">
+              <a data-aos="fade-up" href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  container gapy relative ">
                 <div id="postcat" class="absolute -top-3 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
                   <h2 class="text-sm text-white">{{ $post->category->name }}</h2>
                 </div>

@@ -27,7 +27,7 @@
           <h2 class="text-sm">{{ $post->status->name }}</h2>
         </div>
       </div>
-      <div class="layer1 h-auto rounded-t-[40px] container flex flex-col  justify-evenly -mt-[8dvh] shadow-md gapy relative z-10 gap-y-2">
+      <div data-aos="fade-up" class="layer1 h-auto rounded-t-[40px] container flex flex-col  justify-evenly -mt-[8dvh] shadow-md gapy relative z-10 gap-y-2">
         <div class="text-center">
           <h1 class="text-primary dark:text-primary">{{ $post->title }}</h2></h1>
         </div>

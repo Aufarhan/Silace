@@ -6,9 +6,9 @@
     </x-primary-button>
   </div>
   <div class="flex flex-col justify-center items-center container">
-    <div class="bg-gradient-to-b from-primary to-violet-400 md:h-[70dvh] h-[36dvh] rounded-[20px] md:rounded-t-[0px] overflow-hidden flex items-center justify-center pt-[8dvh] md:mt-[0dvh] mt-[2dvh] md:relative md:overflow-hidden w-full">
+    <div data-aos="fade-up" class="bg-gradient-to-b from-primary to-violet-400 md:h-[70dvh] h-[36dvh] rounded-[20px] md:rounded-t-[0px] overflow-hidden flex items-center justify-center pt-[8dvh] md:mt-[0dvh] mt-[2dvh] md:relative md:overflow-hidden w-full">
       <div class="md:flex hidden absolute -translate-y-1/2 top-1/2 bg-backgroundLight/80 dark:bg-backgroundDark/80 h-full md:w-[40%] left-0 justiy-center container">
-        <div class="flex flex-col justify-center container">
+        <div data-aos="fade-up" class="flex flex-col justify-center container">
           <div class="">
             <h1 class="logo text-3xl">Silace :<h2>Si Lapor Cepat</h2></h1>
           </div>
@@ -96,7 +96,7 @@
 </section>
 
 <section id="caraKerja" class="background pt-[8dvh] pb-[2dvh] md:pb-[4dvh] relative rounded-b-[40px] z-20">
-  <div class="flex flex-col md:grid md:grid-cols-3 md:gap-x-6 gap-y-[8dvh] container">
+  <div data-aos="fade-up" class="flex flex-col md:grid md:grid-cols-3 md:gap-x-6 gap-y-[8dvh] container">
     <div class="layer2 flex flex-col items-center text-center rounded-[40px] h-auto gapy justify-evenly container  shadow-md" >
       <div class="h-[60px] w-[60px] bg-primary -mt-[60px] rounded-[10px] shadow-md">
         <div class="w-full h-full flex items-center justify-center">
@@ -136,7 +136,7 @@
 
 
 <section id="laporan" class="bg-primary h-auto pt-[20px] relative z-10 -mt-[40px] rounded-b-[40px] ">
-  <div class="container">
+  <div data-aos="fade-up" class="container">
     <div class="pt-[40px] flex justify-center items-center">
       <x-stars-w></x-stars-w>
     </div>
@@ -160,7 +160,7 @@
 </section>
 
 <section id="aduan" class="background h-auto relative -mt-[40px] z-0">
-  <div class="w-full container">
+  <div data-aos="fade-up" class="w-full container">
     <div class="layer2 rounded-b-[40px] h-auto  shadow-md">
       <div class="pt-[20px] flex justify-center items-center">
         <x-stars></x-stars>
@@ -173,7 +173,7 @@
 
     
     @if($posts->count())
-    <div class="flex flex-wrap justify-center justify-items-center gapy gap-[20px] w-full">
+    <div data-aos="fade-up" class="flex flex-wrap justify-center justify-items-center gapy gap-[20px] w-full">
       <a href="/posts/{{ $posts[0]->slug }}" class="w-full flex flex-col justify-between layer2 rounded-[40px] h-auto shadow-md  group  py-[20px] relative">
         <div id="postcat" class="absolute -top-2 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
           <h2 class="text-sm text-white">{{ $posts[0]->category->name }}</h2>
@@ -193,9 +193,9 @@
           </div>
         </div>
       </a>
-      <div class="flex flex-col md:grid grid-cols-3 gap-4 mx-[12.5px] w-full">
+      <div  class="flex flex-col md:grid grid-cols-3 gap-4 mx-[12.5px] w-full">
         @foreach ($posts->skip(1)->slice(0,3) as $post)
-        <a href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  gapy relative md:p-3 ">
+        <a data-aos="fade-up" href="/posts/{{ $post->slug }}" class="w-full flex flex-row justify-start layer2 rounded-[40px] h-[24dvh] shadow-md  group  gapy relative md:p-3 ">
           <div id="postcat" class="absolute -top-3 -right-2 py-1.5 px-4 rounded-[10px] bg-primary shadow-md">
             <h2 class="text-sm text-white">{{ $post->category->name }}</h2>
           </div>
